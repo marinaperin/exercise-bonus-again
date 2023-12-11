@@ -65,7 +65,7 @@ function App() {
               mode={mode}
               options={options}
               onChange={(e) =>
-                setFormData((oldInputValues) => {
+                setFormData(() => {
                   const newFormData = structuredClone(formData);
                   newFormData[i].value = e.target[onChangeVal];
                   return newFormData;
@@ -76,9 +76,7 @@ function App() {
         })}
         <button
           onClick={() => {
-            formData.map((obj) => {
-              setIsClicked(true);
-            });
+            setIsClicked(true);
           }}
         >
           Submit
@@ -100,7 +98,9 @@ function App() {
 
               return (
                 <li key={label}>
-                  <span>{label}: {obj.value}</span>
+                  <span>
+                    {label}: {obj.value}
+                  </span>
                 </li>
               );
             })}
